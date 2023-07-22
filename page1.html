@@ -10,8 +10,12 @@
     <form action="process-form.php" method="POST" onsubmit="return validateCaptcha()">
         <fieldset>
         <legend>Personal Information</legend>
+        <!-- <input type="hidden" name="firstName" value="<?php echo $firstName;?>">
+        <input type="hidden" name="lastName" value="<?php echo $lastName;?>">
+        <input type="hidden" name="email" value="<?php echo $email;?>">
+        <input type="hidden" name="gender" value="<?php echo $gender;?>"> -->
         <label for="first-name">First Name:</label>
-        <input type="text" id="first-name" name="first-name" required>
+        <input type="text" id="first-name" name="first-name">
         <br>
         <label for="last-name">Last Name:</label>
         <input type="text" id="last-name" name="last-name" required>
@@ -61,7 +65,7 @@
         <input type="submit" value="Submit">
         <input type="reset" value="Reset">
     </form>
-
+    <a href="students.php"><button class="button">Show Table</button></a>
     <script>
         function validateCaptcha() {
             var captchaInput = document.getElementById("captcha");
