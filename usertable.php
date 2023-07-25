@@ -1,18 +1,12 @@
 <?php
+    include ("database.php");
     $servername = "DESKTOP-L558MLK\MSSQLSERVER01";
     $dbname = "Users";
-    $user = "root";
-    $pass = "";
     try {
-        $conn = new PDO("sqlsrv:Server=$servername;Database=$dbname");
-        $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-        $sql = "SELECT * FROM information";
-        $stmt = $conn->prepare($sql);
-        $stmt->execute();
-        
-        // set the resulting array to associative
-        $result = $stmt->setFetchMode(PDO::FETCH_ASSOC);
-        $rows = $stmt->fetchAll();
+        $db = new Database($servername, $dbname);
+        $tableName = 'information';
+        $rows = $db->getRows($tableName);
+        $db->closeConnection();
         echo "<h1 style='font-size: 36px;'>Users</h1>";
         echo "<table style='border-collapse: collapse; width: 100%;'>";
         echo "<thead style='background-color: #648880; color: white;'>";
